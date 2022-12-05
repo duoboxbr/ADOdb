@@ -1304,8 +1304,14 @@ class ADODB_mysqli extends ADOConnection {
 				/*
 				* Did we throw an error?
 				*/
-				if ($ret == false)
+				if ($ret == false) {
+					$this->outp_throw(
+						$this->ErrorMsg(),
+						'Execute',
+						$sql
+					);
 					return false;
+				}
 			}
 
 			// Tells affected_rows to be compliant
